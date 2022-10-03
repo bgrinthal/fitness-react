@@ -17,9 +17,11 @@ router.route('/add').post((req, res) => {
     const username = req.body.username;
 
     // creates new instance of User using the username
-    const newUser = new User({username});
-    
-    // saced to mongoDB atlas DB
+    const newUser = new User({
+        username
+    });
+
+    // saved to mongoDB atlas database
     newUser.save()
         .then(() => res.json('User added!'))
         .catch(err => res.status(400).json('Error: ' + err));
