@@ -1,28 +1,24 @@
 {
-  "name": "mern-fitness",
+  "dependencies": {
+    "node": "^18.10.0"
+  },
+  "name": "fitness-react",
   "version": "1.0.0",
-  "description": "",
-  "main": "server/server.js",
+  "main": "index.js",
+  "devDependencies": {},
   "scripts": {
-    "start": "node server --ignore client",
-    "develop": "concurrently \"cd server && npm run start\" \"cd client && npm start\"",
-    "install": "cd server && npm i && cd ../client && npm i",
-    "seed": "cd server && npm run seed",
-    "build": "cd client && npm run build"
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bgrinthal/fitness-react.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "devDependencies": {
-    "concurrently": "^5.1.0"
+  "bugs": {
+    "url": "https://github.com/bgrinthal/fitness-react/issues"
   },
-  "dependencies": {
-    "bootstrap": "^5.1.3",
-    "react-alert": "^7.0.3",
-    "react-alert-template-basic": "^1.0.2",
-    "react-icons": "^4.4.0",
-    "react-masonry-css": "^1.0.16",
-    "react-toastify": "^9.0.7",
-    "uuid": "^8.3.2"
-  }
+  "homepage": "https://github.com/bgrinthal/fitness-react#readme",
+  "description": ""
 }
