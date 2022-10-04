@@ -1,11 +1,12 @@
 {
   "dependencies": {
-    "node": "^18.10.0"
+    "bootstrap": "^5.2.2",
+    "node": "^18.10.0",
+    "react-router-dom": "^6.4.1"
   },
   "name": "fitness-react",
   "version": "1.0.0",
   "main": "index.js",
-  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
