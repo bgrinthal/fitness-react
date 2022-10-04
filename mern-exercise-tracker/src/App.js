@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 // import components
@@ -18,10 +18,12 @@ function App() {
       <div>
         <Navbar />
         <br />
+        <Routes>
         <Route path="/" element={<ExerciseList />}/>
         <Route path="/edit/:id" element={<EditExercise />} />
         <Route path="/create" element={<CreateExercise />} />
         <Route path="/user" element={<CreateUser />} />
+        </Routes>
       </div>
     </Router>
   );
