@@ -32,7 +32,7 @@ function ExerciseList() {
     }, [])
 
     // delete exercise function
-    function deleteExercises(id) {
+    function deleteExercise(id) {
         // pass in the selected exercise id
         axios.delete('http://localhost:5555/exercises/' + id)
             .then(res => console.log(res.data));
@@ -45,7 +45,7 @@ function ExerciseList() {
 
     function exerciseList() {
         return exercises.map(currentexercise => {
-            return <Exercise exercise={currentexercise} deleteExercises={deleteExercises} key={currentexercise._id} />;
+            return <Exercise exercise={currentexercise} deleteExercise={deleteExercise} key={currentexercise._id} />;
         })
     }
 
