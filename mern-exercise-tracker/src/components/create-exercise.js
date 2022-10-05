@@ -6,11 +6,12 @@ import "react-datepicker/dist/react-datepicker.css";
 function CreateExercise() {
     const userInput = useRef();
 
-    const [users, setUsers] = useState(['test user']);
+    // states and set states
     const [username, setUsername] = useState('test user');
     const [description, setDescription] = useState('');
     const [duration, setDuration] = useState(0);
     const [date, setDate] = useState(new Date());
+    const [users, setUsers] = useState(['test user']);
 
     // constructor(props) {
     //     super(props);
@@ -50,6 +51,7 @@ function CreateExercise() {
 
     // }
 
+    // targets each input field
     function onChangeUsername(e) {
         setUsername(e.target.value)
     }
@@ -66,6 +68,7 @@ function CreateExercise() {
         setDate(date)
     }
 
+    // saves each exercise as their input
     function onSubmit(e) {
         e.preventDefault();
 
@@ -92,6 +95,7 @@ function CreateExercise() {
                             className="form-control"
                             value={username}
                             onChange={onChangeUsername}>
+                                {/* { maps over all users in users array creating drop down of each user } */}
                             {
                                 users.map(function (user) {
                                     return <option
