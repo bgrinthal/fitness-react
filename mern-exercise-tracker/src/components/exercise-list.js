@@ -43,7 +43,7 @@ function ExerciseList() {
     }
 
     function exerciseList() {
-        return exercises.map(currentexercise => {
+        return [exercises].map(currentexercise => {
             return <Exercise exercise={currentexercise} deleteExercises={deleteExercises} key={currentexercise._id} />;
         })
     }
