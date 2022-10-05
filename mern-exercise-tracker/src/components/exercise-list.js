@@ -20,6 +20,7 @@ function ExerciseList() {
     // states and set states
     const [exercises, setExercises] = useState([]);
 
+    console.log(exercises)
     // use effect to display on page load
     useEffect(() => {
         axios.get('http://localhost:5555/exercises/')
@@ -27,14 +28,9 @@ function ExerciseList() {
                 if (response.data.length > 0) {
                     setExercises( response.data )
                 }
-                check()
             })
     }, [])
 
-    function check(){
-        console.log(exercises)
-    }
-    
     // delete exercise function
     function deleteExercises(id) {
         // pass in the selected exercise id
@@ -48,7 +44,7 @@ function ExerciseList() {
     }
 
     function exerciseList() {
-        return [exercises].map(currentexercise => {
+        return exercises.map(currentexercise => {
             return <Exercise exercise={currentexercise} deleteExercises={deleteExercises} key={currentexercise._id} />;
         })
     }
