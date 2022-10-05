@@ -1,4 +1,5 @@
 import React, { Component, useState, useEffect, useRef } from 'react';
+import axios from 'axios'
 
 
 function CreateUser() {
@@ -20,9 +21,12 @@ function CreateUser() {
         }
         console.log(user);
 
+        //  sends (post) user to backend endpoint below
+        axios.post('http://localhost:5555/users/add', user)
+            .then(res => console.log(res.data))
+
         setUsername('')
 
-        // window.location = '/'
     }
 
     return (
@@ -32,9 +36,9 @@ function CreateUser() {
                 <div className='form-group'>
                     <label> Username: </label>
                     <input type="text"
-                    requered
+                    required
                     className='form-control'
-                    value={username}
+                    // value={username}
                     onChange={onChangeUsername}
                     />
                 </div>
