@@ -8,7 +8,7 @@ const Exercise = props => (
         <td>{props.exercise.username}</td>
         <td>{props.exercise.description}</td>
         <td>{props.exercise.duration}</td>
-        <td>{props.exercise.date.substring(0, 10)}</td>
+        <td>{props.exercise.date ? props.exercise.date.substring(0, 10) : ''}</td>
         <td>
             <Link to={"/edit/" + props.exercise._id}>edit</Link> | <a href="#" onClick={() => { props.deleteExercise(props.exercise._id) }}>delete</a>
         </td>
@@ -25,11 +25,16 @@ function ExerciseList() {
         axios.get('http://localhost:5555/exercises/')
             .then(response => {
                 if (response.data.length > 0) {
-                    setExercises({ exercises: response.data })
+                    setExercises( response.data )
                 }
+                check()
             })
     }, [])
 
+    function check(){
+        console.log(exercises)
+    }
+    
     // delete exercise function
     function deleteExercises(id) {
         // pass in the selected exercise id
