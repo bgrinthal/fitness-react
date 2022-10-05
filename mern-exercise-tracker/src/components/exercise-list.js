@@ -20,14 +20,14 @@ function ExerciseList() {
     // states and set states
     const [exercises, setExercises] = useState([]);
 
-    console.log(exercises)
     // use effect to display on page load
     useEffect(() => {
         axios.get('http://localhost:5555/exercises/')
             .then(response => {
                 if (response.data.length > 0) {
-                    setExercises( response.data )
+                    setExercises(response.data)
                 }
+                console.log(exercises)
             })
     }, [])
 
@@ -38,9 +38,6 @@ function ExerciseList() {
             .then(res => console.log(res.data));
         // filters and displays everything that does not equal the id of the exercise selected
         setExercises(exercises.filter(el => el._id !== id))
-            .catch((error) => {
-                console.log(error)
-            })
     }
 
     function exerciseList() {

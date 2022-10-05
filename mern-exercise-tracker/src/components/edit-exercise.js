@@ -41,7 +41,7 @@ function EditExercise() {
     //             })
     // }, []);
 
-    useEffect(() => {
+    useEffect((id) => {
         axios.get('http://localhost:5555/exercises/')
         .then(response => {
             if (response.data.length > 0) {
@@ -50,11 +50,13 @@ function EditExercise() {
                 // setDescription( response.data.description )
                 // setDuration( response.data.duration )
                 // setDate( response.data.date )
+                console.log(exercises)
             }
-            console.log(exercises)
+            
         })
-        setCurrentExercise(exercises.find((exercise) => exercise._id === id));
-    })
+        // work here -  need to find proper ID
+        .then(setCurrentExercise(exercises.find((exercise) => exercise._id === id)))
+    }, [])
 
     // targets each input field
     function onChangeUsername(e) {
