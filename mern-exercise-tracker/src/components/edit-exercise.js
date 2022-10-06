@@ -3,59 +3,37 @@ import axios from 'axios';
 import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
 
-function EditExercise() {
-
+function EditExercise({ match }) {
     // states and set states
     const [currentExercise, setCurrentExercise] = useState({});
     const [exercises, setExercises] = useState([]);
     const [username, setUsername] = useState('');
     const [description, setDescription] = useState('');
     const [duration, setDuration] = useState(0);
-    const [date, setDate] = useState(new Date());
+    const [date, setDate] = useState();
     const [users, setUsers] = useState(['']);
 
     const userInput = useRef();
 
-    // use effect to display on page load
-    // useEffect(() => {
-    //     axios.get('http://localhost:5555/exercises/')
-    //         .then(response => {
-    //             setUsername(response.data.username)
-    //             setDescription(response.data.description)
-    //             setDuration(response.data.duration)
-    //             setDate(new Date(response.data.date))
-    //             console.log(date)
-    //         })
-    //         .catch((error) => {
-    //             console.log(error);
-    //         })
+    useEffect(() => {
+        axios.get('http://localhost:5555/exercises/' + ((window.location.href).split('/'))[4])
+            .then(response => {
+                    // setExercises( response.data )
+                    setUsername(response.data.username)
+                    setDescription(response.data.description)
+                    setDuration(response.data.duration)
+                    setDate(new Date((response.data.date)))
+            })
 
-    //         axios.get('http://localhost:5555/users/')
-    //             .then(response => {
-    //                 if (response.data.length > 0) {
-    //                     setUsers(response.data.map(user => user.username))
-    //                 }
-    //             })
-    //             .catch((error) => {
-    //                 console.log(error);
-    //             })
-    // }, []);
-
-    useEffect((id) => {
-        axios.get('http://localhost:5555/exercises/')
-        .then(response => {
-            if (response.data.length > 0) {
-                setExercises( response.data )
-                // setUsername( response.data.username )
-                // setDescription( response.data.description )
-                // setDuration( response.data.duration )
-                // setDate( response.data.date )
-                console.log(exercises)
-            }
-            
-        })
-        // work here -  need to find proper ID
-        .then(setCurrentExercise(exercises.find((exercise) => exercise._id === id)))
+        axios.get('http://localhost:5555/users/')
+            .then(response => {
+                if (response.data.length > 0) {
+                    setUsers(response.data.map(user => user.username))
+                }
+            })
+            .catch((error) => {
+                console.log(error);
+            })
     }, [])
 
     // targets each input field
@@ -88,7 +66,7 @@ function EditExercise() {
         console.log(exercise);
 
         //  sends (post) user to backend endpoint below
-        axios.post('http://localhost:5555/exercises/update/', exercise)
+        axios.post('http://localhost:5555/exercises/update/'+ ((window.location.href).split('/'))[4], exercise)
             .then(res => console.log(res.data))
 
         window.location = '/'
@@ -137,7 +115,7 @@ function EditExercise() {
                     <label>Date: </label>
                     <div>
                         <DatePicker
-                            dateFormat="yyyy-dd-mm"
+                            // dateFromat='mm/dd/yyyy'
                             selected={date}
                             onChange={onChangeDate}
                         />
@@ -153,3 +131,4 @@ function EditExercise() {
 }
 
 export default EditExercise;
+

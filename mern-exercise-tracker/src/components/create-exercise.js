@@ -27,44 +27,6 @@ function CreateExercise() {
             })
     }, [])
 
-    // constructor(props) {
-    //     super(props);
-
-    //     this.onChangeUsername = this.onChangeUsername.bind(this);
-    //     this.onChangeDescription = this.onChangeDescription.bind(this);
-    //     this.onChangeDuration = this.onChangeDuration.bind(this);
-    //     this.onChangeDate = this.onChangeDate.bind(this);
-    //     this.onSubmit = this.onSubmit.bind(this);
-
-    //     this.state = {
-    //         username: '',
-    //         description: '',
-    //         duration: 0,
-    //         date: new Date(),
-    //         users: []
-    //     }
-    // }
-
-    // function componentDidMount() {
-    //     this.setState({
-    //         users: ['test user'],
-    //         username: 'test user'
-    //     })
-    //     // axios.get('http://localhost:5000/users/')
-    //     //     .then(response => {
-    //     //         if (response.data.length > 0) {
-    //     //             this.setState({
-    //     //                 users: response.data.map(user => user.username),
-    //     //                 username: response.data[0].username
-    //     //             })
-    //     //         }
-    //     //     })
-    //     //     .catch((error) => {
-    //     //         console.log(error);
-    //     //     })
-
-    // }
-
     // targets each input field
     function onChangeUsername(e) {
         setUsername(e.target.value)
