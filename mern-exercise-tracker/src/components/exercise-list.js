@@ -4,15 +4,25 @@ import axios from 'axios'
 
 // Exercise components to display each exercise on the list
 const Exercise = props => (
-    <tr>
-        <td>{props.exercise.username}</td>
-        <td>{props.exercise.description}</td>
-        <td>{props.exercise.duration}</td>
-        <td>{props.exercise.date ? props.exercise.date.substring(0, 10) : ''}</td>
-        <td>
+    // <tr>
+    //     <td>{props.exercise.username}</td>
+    //     <td>{props.exercise.description}</td>
+    //     <td>{props.exercise.duration}</td>
+    //     <td>{props.exercise.date ? props.exercise.date.substring(0, 10) : ''}</td>
+    //     <td>
+    //         <Link to={"/edit/" + props.exercise._id}>edit</Link> | <a href="#" onClick={() => { props.deleteExercise(props.exercise._id) }}>delete</a>
+    //     </td>
+    // </tr>
+    <div className="card mt-4" style={{ width: '18rem' }}>
+        <img className="card-img-top" src="..." alt="Card image cap" />
+        <div className="card-body">
+            <h5 className="card-title">User: {props.exercise.username}</h5>
+            <p className="card-text">Exercise: {props.exercise.description}</p>
+            <p className="card-text">Time(min): {props.exercise.duration}</p>
+            <p className="card-text">Date: {props.exercise.date ? props.exercise.date.substring(0, 10) : ''}</p>
             <Link to={"/edit/" + props.exercise._id}>edit</Link> | <a href="#" onClick={() => { props.deleteExercise(props.exercise._id) }}>delete</a>
-        </td>
-    </tr>
+        </div>
+    </div>
 );
 
 function ExerciseList() {
@@ -42,27 +52,28 @@ function ExerciseList() {
 
     function exerciseList() {
         return exercises.map(currentexercise => {
-            return <Exercise exercise={currentexercise} deleteExercise={deleteExercise} key={currentexercise._id} />;
+            return (
+                <div className="col-sm-3" key={currentexercise._id}>
+                    <Exercise exercise={currentexercise} deleteExercise={deleteExercise} />
+                </div>
+            )
         })
     }
 
     return (
         <div>
             <h3>Logged Exercises</h3>
-            <table className="table">
-                <thead className="thead-light">
-                    <tr>
-                        <th>Username</th>
-                        <th>Description</th>
-                        <th>Duration</th>
-                        <th>Date</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {exerciseList()}
-                </tbody>
-            </table>
+            <div className="table">
+                <div className="thead-light">
+                </div>
+                <div>
+                    <div className="container">
+                        <div className="row">
+                            {exerciseList()}
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     )
 }
