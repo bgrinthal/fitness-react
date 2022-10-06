@@ -27,6 +27,7 @@ function CreateUser() {
 
         setUsername('')
 
+        window.location = '/'
     }
 
     return (
