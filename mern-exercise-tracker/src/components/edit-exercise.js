@@ -9,7 +9,6 @@ function EditExercise({ match }) {
     const [photo, setPhoto] = useState('');
     const [name, setName] = useState('');
     const [description, setDescription] = useState('');
-    const [duration, setDuration] = useState(0);
     const [date, setDate] = useState();
     const [users, setUsers] = useState(['']);
 
@@ -18,12 +17,12 @@ function EditExercise({ match }) {
     useEffect(() => {
         axios.get('http://localhost:5555/exercises/' + ((window.location.href).split('/'))[4])
             .then(response => {
-                    // setExercises( response.data )
-                    setUsername(response.data.username)
-                    setName(response.data.name)
-                    setDescription(response.data.description)
-                    setDuration(response.data.duration)
-                    setDate(new Date((response.data.date)))
+                // setExercises( response.data )
+                setUsername(response.data.username)
+                // setPhoto(response.data.photo)
+                setName(response.data.name)
+                setDescription(response.data.description)
+                setDate(new Date((response.data.date)))
             })
 
         axios.get('http://localhost:5555/users/')
@@ -54,10 +53,6 @@ function EditExercise({ match }) {
         setDescription(e.target.value)
     }
 
-    function onChangDuration(e) {
-        setDuration(e.target.value)
-    }
-
     function onChangeDate(date) {
         setDate(date)
     }
@@ -71,13 +66,12 @@ function EditExercise({ match }) {
             photo: photo,
             name: name,
             description: description,
-            duration: duration,
             date: date
         }
         console.log(exercise);
 
         //  sends (post) user to backend endpoint below
-        axios.post('http://localhost:5555/exercises/update/'+ ((window.location.href).split('/'))[4], exercise)
+        axios.post('http://localhost:5555/exercises/update/' + ((window.location.href).split('/'))[4], exercise)
             .then(res => console.log(res.data))
 
         window.location = '/'
@@ -104,13 +98,16 @@ function EditExercise({ match }) {
                         }
                     </select>
                 </div>
-                <input
+                <div className="form-group">
+                    <label>Exercise Photo : </label>
+                    <input
                         required
-                        type="text"
+                        type="file"
                         className="form-control"
                         value={photo}
                         onChange={onChangPhoto}
                     />
+                </div>
                 <div className="form-group">
                     <label>Exercise Name: </label>
                     <input
@@ -127,15 +124,6 @@ function EditExercise({ match }) {
                         className="form-control"
                         value={description}
                         onChange={onChangeDescription}
-                    />
-                </div>
-                <div className="form-group">
-                    <label>Duration (in minutes): </label>
-                    <input
-                        type="text"
-                        className="form-control"
-                        value={duration}
-                        onChange={onChangDuration}
                     />
                 </div>
                 <div className="form-group">

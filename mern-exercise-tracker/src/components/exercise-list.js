@@ -11,7 +11,6 @@ const Exercise = props => (
             <h5 className="card-title">User: {props.exercise.username}</h5>
             <p className="card-text">Name: {props.exercise.name}</p>
             <p className="card-text">Description: {props.exercise.description}</p>
-            <p className="card-text">Time(min): {props.exercise.duration}</p>
             <p className="card-text">Date: {props.exercise.date ? props.exercise.date.substring(0, 10) : ''}</p>
             <Link to={"/edit/" + props.exercise._id}>edit</Link> | <a href="#" onClick={() => { props.deleteExercise(props.exercise._id) }}>delete</a>
         </div>

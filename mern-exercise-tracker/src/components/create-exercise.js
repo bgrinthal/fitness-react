@@ -11,7 +11,6 @@ function CreateExercise() {
     const [photo, setPhoto] = useState('');
     const [name, setName] = useState('');
     const [description, setDescription] = useState('');
-    const [duration, setDuration] = useState(0);
     const [date, setDate] = useState(new Date());
     const [users, setUsers] = useState(['']);
 
@@ -46,10 +45,6 @@ function CreateExercise() {
         setDescription(e.target.value)
     }
 
-    function onChangDuration(e) {
-        setDuration(e.target.value)
-    }
-
     function onChangeDate(date) {
         setDate(date)
     }
@@ -63,7 +58,6 @@ function CreateExercise() {
             photo: photo,
             name: name,
             description: description,
-            duration: duration,
             date: date
         }
         console.log(exercise);
@@ -74,7 +68,7 @@ function CreateExercise() {
 
         console.log(exercise)
 
-        // window.location = '/'
+        window.location = '/'
     }
 
 
@@ -102,16 +96,13 @@ function CreateExercise() {
                 </div>
                 <div className="form-group">
                     <label>Exercise Photo : </label>
-                    
-                        <input
-                            required
-                            type="file"
-                            className="form-control"
-                            value={photo}
-                            onChange={onChangPhoto}
-                        />
-                        <input type="submit" />
-                    
+                    <input
+                        required
+                        type="file"
+                        className="form-control"
+                        value={photo}
+                        onChange={onChangPhoto}
+                    />
                 </div>
                 <div className="form-group">
                     <label>Exercise Name : </label>
@@ -130,15 +121,6 @@ function CreateExercise() {
                         className="form-control"
                         value={description}
                         onChange={onChangeDescription}
-                    />
-                </div>
-                <div className="form-group">
-                    <label>Duration (in minutes): </label>
-                    <input
-                        type="text"
-                        className="form-control"
-                        value={duration}
-                        onChange={onChangDuration}
                     />
                 </div>
                 <div className="form-group">

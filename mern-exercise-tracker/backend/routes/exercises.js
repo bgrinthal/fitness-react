@@ -17,7 +17,6 @@ router.route('/add').post((req, res) => {
     const photo = req.body.photo;
     const name = req.body.name;
     const description = req.body.description;
-    const duration = Number(req.body.duration);
     const date = Date.parse(req.body.date)
 
     //create a new exercise using username, description, name, and date (in model)
@@ -26,7 +25,6 @@ router.route('/add').post((req, res) => {
         photo,
         name,
         description,
-        duration,
         date
     });
 
@@ -62,7 +60,6 @@ router.route('/update/:id').post((req, res) => {
             exercise.photo = req.body.photo;
             exercise.name = req.body.name;
             exercise.description = req.body.description;
-            exercise.duration = Number(req.body.duration);
             exercise.date = Date.parse(req.body.date);
 
             // saves to database
