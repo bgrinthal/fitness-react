@@ -24,6 +24,7 @@ function CreateUser() {
         //  sends (post) user to backend endpoint below
         axios.post('http://localhost:5555/users/add', user)
             .then(res => console.log(res.data))
+            .catch((error) => console.log(error));
 
         setUsername('')
 

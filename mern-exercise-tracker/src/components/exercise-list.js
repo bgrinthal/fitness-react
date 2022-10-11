@@ -7,7 +7,7 @@ const Exercise = props => (
     // <tr>
     //     <td>{props.exercise.username}</td>
     //     <td>{props.exercise.description}</td>
-    //     <td>{props.exercise.duration}</td>
+    //     <td>{props.exercise.exercise}</td>
     //     <td>{props.exercise.date ? props.exercise.date.substring(0, 10) : ''}</td>
     //     <td>
     //         <Link to={"/edit/" + props.exercise._id}>edit</Link> | <a href="#" onClick={() => { props.deleteExercise(props.exercise._id) }}>delete</a>
@@ -18,7 +18,7 @@ const Exercise = props => (
         <div className="card-body">
             <h5 className="card-title">User: {props.exercise.username}</h5>
             <p className="card-text">Exercise: {props.exercise.description}</p>
-            <p className="card-text">Time(min): {props.exercise.duration}</p>
+            <p className="card-text">Time(min): {props.exercise.exercise}</p>
             <p className="card-text">Date: {props.exercise.date ? props.exercise.date.substring(0, 10) : ''}</p>
             <Link to={"/edit/" + props.exercise._id}>edit</Link> | <a href="#" onClick={() => { props.deleteExercise(props.exercise._id) }}>delete</a>
         </div>

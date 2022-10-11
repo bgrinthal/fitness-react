@@ -15,14 +15,14 @@ router.route('/').get((req, res) => {
 router.route('/add').post((req, res) => {
     const username = req.body.username;
     const description = req.body.description;
-    const duration = Number(req.body.duration);
+    const exercise = Number(req.body.exercise);
     const date = Date.parse(req.body.date)
 
-    //create a new exercise using username, description, duration, and date (in model)
+    //create a new exercise using username, description, exercise, and date (in model)
     const newExercise = new Exercise({
         username,
         description,
-        duration,
+        exercise,
         date
     });
 
@@ -56,7 +56,7 @@ router.route('/update/:id').post((req, res) => {
             //set each to the new edited information (overwrites existing information)
             exercise.username = req.body.username;
             exercise.description = req.body.description;
-            exercise.duration = Number(req.body.duration);
+            exercise.exercise = Number(req.body.exercise);
             exercise.date = Date.parse(req.body.date);
 
             // saves to database

@@ -9,7 +9,7 @@ function EditExercise({ match }) {
     const [exercises, setExercises] = useState([]);
     const [username, setUsername] = useState('');
     const [description, setDescription] = useState('');
-    const [duration, setDuration] = useState(0);
+    const [exercise, setExercise] = useState(0);
     const [date, setDate] = useState();
     const [users, setUsers] = useState(['']);
 
@@ -21,7 +21,7 @@ function EditExercise({ match }) {
                     // setExercises( response.data )
                     setUsername(response.data.username)
                     setDescription(response.data.description)
-                    setDuration(response.data.duration)
+                    setExercise(response.data.exercise)
                     setDate(new Date((response.data.date)))
             })
 
@@ -45,8 +45,8 @@ function EditExercise({ match }) {
         setDescription(e.target.value)
     }
 
-    function onChangeDuration(e) {
-        setDuration(e.target.value)
+    function onChangeExercise(e) {
+        setExercise(e.target.value)
     }
 
     function onChangeDate(date) {
@@ -60,7 +60,7 @@ function EditExercise({ match }) {
         const exercise = {
             username: username,
             description: description,
-            duration: duration,
+            exercise: exercise,
             date: date
         }
         console.log(exercise);
@@ -103,12 +103,12 @@ function EditExercise({ match }) {
                     />
                 </div>
                 <div className="form-group">
-                    <label>Duration (in minutes): </label>
+                    <label>Exercise (in minutes): </label>
                     <input
                         type="text"
                         className="form-control"
-                        value={duration}
-                        onChange={onChangeDuration}
+                        value={exercise}
+                        onChange={onChangeExercise}
                     />
                 </div>
                 <div className="form-group">

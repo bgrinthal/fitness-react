@@ -9,7 +9,7 @@ function CreateExercise() {
     // states and set states
     const [username, setUsername] = useState('');
     const [description, setDescription] = useState('');
-    const [duration, setDuration] = useState(0);
+    const [exercise, setExercise] = useState(0);
     const [date, setDate] = useState(new Date());
     const [users, setUsers] = useState(['']);
 
@@ -36,8 +36,8 @@ function CreateExercise() {
         setDescription(e.target.value)
     }
 
-    function onChangeDuration(e) {
-        setDuration(e.target.value)
+    function onChangeExercise(e) {
+        setExercise(e.target.value)
     }
 
     function onChangeDate(date) {
@@ -51,7 +51,7 @@ function CreateExercise() {
         const exercise = {
             username: username,
             description: description,
-            duration: duration,
+            exercise: exercise,
             date: date
         }
         console.log(exercise);
@@ -96,12 +96,12 @@ function CreateExercise() {
                     />
                 </div>
                 <div className="form-group">
-                    <label>Duration (in minutes): </label>
+                    <label>Exercise (in minutes): </label>
                     <input
                         type="text"
                         className="form-control"
-                        value={duration}
-                        onChange={onChangeDuration}
+                        value={exercise}
+                        onChange={onChangeExercise}
                     />
                 </div>
                 <div className="form-group">

@@ -7,12 +7,12 @@ exerciseSchema = new Schema({
         type: String,
         required: true
     },
-    description:{
-        type: String,
+    exercise:{
+        type: Number,
         required: true
     },
-    duration:{
-        type: Number,
+    description:{
+        type: String,
         required: true
     },
     date:{
