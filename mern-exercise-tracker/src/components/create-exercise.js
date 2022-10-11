@@ -9,7 +9,8 @@ function CreateExercise() {
     // states and set states
     const [username, setUsername] = useState('');
     const [description, setDescription] = useState('');
-    const [exercise, setExercise] = useState(0);
+    const [name, setName] = useState('');
+    const [duration, setDuration] = useState(0);
     const [date, setDate] = useState(new Date());
     const [users, setUsers] = useState(['']);
 
@@ -36,8 +37,12 @@ function CreateExercise() {
         setDescription(e.target.value)
     }
 
-    function onChangeExercise(e) {
-        setExercise(e.target.value)
+    function onChangName(e) {
+        setName(e.target.value)
+    }
+
+    function onChangDuration(e) {
+        setDuration(e.target.value)
     }
 
     function onChangeDate(date) {
@@ -50,8 +55,9 @@ function CreateExercise() {
 
         const exercise = {
             username: username,
+            name: name,
             description: description,
-            exercise: exercise,
+            duration: duration,
             date: date
         }
         console.log(exercise);
@@ -87,6 +93,15 @@ function CreateExercise() {
                     </select>
                 </div>
                 <div className="form-group">
+                    <label>Exercise Name : </label>
+                    <input
+                        type="text"
+                        className="form-control"
+                        value={name}
+                        onChange={onChangName}
+                    />
+                </div>
+                <div className="form-group">
                     <label>Description: </label>
                     <input type="text"
                         required
@@ -96,12 +111,12 @@ function CreateExercise() {
                     />
                 </div>
                 <div className="form-group">
-                    <label>Exercise (in minutes): </label>
+                    <label>Duration (in minutes): </label>
                     <input
                         type="text"
                         className="form-control"
-                        value={exercise}
-                        onChange={onChangeExercise}
+                        value={duration}
+                        onChange={onChangDuration}
                     />
                 </div>
                 <div className="form-group">

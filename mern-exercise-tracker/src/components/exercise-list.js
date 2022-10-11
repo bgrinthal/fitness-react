@@ -1,24 +1,17 @@
-import React, { Component, useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios'
 
 // Exercise components to display each exercise on the list
 const Exercise = props => (
-    // <tr>
-    //     <td>{props.exercise.username}</td>
-    //     <td>{props.exercise.description}</td>
-    //     <td>{props.exercise.exercise}</td>
-    //     <td>{props.exercise.date ? props.exercise.date.substring(0, 10) : ''}</td>
-    //     <td>
-    //         <Link to={"/edit/" + props.exercise._id}>edit</Link> | <a href="#" onClick={() => { props.deleteExercise(props.exercise._id) }}>delete</a>
-    //     </td>
-    // </tr>
+
     <div className="card mt-4" style={{ width: '18rem' }}>
         <img className="card-img-top" src="..." alt="Card image cap" />
         <div className="card-body">
             <h5 className="card-title">User: {props.exercise.username}</h5>
-            <p className="card-text">Exercise: {props.exercise.description}</p>
-            <p className="card-text">Time(min): {props.exercise.exercise}</p>
+            <p className="card-text">Name: {props.exercise.name}</p>
+            <p className="card-text">Description: {props.exercise.description}</p>
+            <p className="card-text">Time(min): {props.exercise.duration}</p>
             <p className="card-text">Date: {props.exercise.date ? props.exercise.date.substring(0, 10) : ''}</p>
             <Link to={"/edit/" + props.exercise._id}>edit</Link> | <a href="#" onClick={() => { props.deleteExercise(props.exercise._id) }}>delete</a>
         </div>
@@ -37,7 +30,7 @@ function ExerciseList() {
                 if (response.data.length > 0) {
                     setExercises(response.data)
                 }
-                console.log(exercises)
+                console.log(response.data)
             })
     }, [])
 

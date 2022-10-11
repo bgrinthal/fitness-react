@@ -1,15 +1,14 @@
-import React, { Component, useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
 
 function EditExercise({ match }) {
     // states and set states
-    const [currentExercise, setCurrentExercise] = useState({});
-    const [exercises, setExercises] = useState([]);
     const [username, setUsername] = useState('');
+    const [name, setName] = useState('');
     const [description, setDescription] = useState('');
-    const [exercise, setExercise] = useState(0);
+    const [duration, setDuration] = useState(0);
     const [date, setDate] = useState();
     const [users, setUsers] = useState(['']);
 
@@ -20,8 +19,9 @@ function EditExercise({ match }) {
             .then(response => {
                     // setExercises( response.data )
                     setUsername(response.data.username)
+                    setName(response.data.name)
                     setDescription(response.data.description)
-                    setExercise(response.data.exercise)
+                    setDuration(response.data.duration)
                     setDate(new Date((response.data.date)))
             })
 
@@ -41,12 +41,16 @@ function EditExercise({ match }) {
         setUsername(e.target.value)
     }
 
+    function onChangeName(e) {
+        setName(e.target.value)
+    }
+
     function onChangeDescription(e) {
         setDescription(e.target.value)
     }
 
-    function onChangeExercise(e) {
-        setExercise(e.target.value)
+    function onChangDuration(e) {
+        setDuration(e.target.value)
     }
 
     function onChangeDate(date) {
@@ -59,8 +63,9 @@ function EditExercise({ match }) {
 
         const exercise = {
             username: username,
+            name: name,
             description: description,
-            exercise: exercise,
+            duration: duration,
             date: date
         }
         console.log(exercise);
@@ -94,6 +99,15 @@ function EditExercise({ match }) {
                     </select>
                 </div>
                 <div className="form-group">
+                    <label>Exercise Name: </label>
+                    <input
+                        type="text"
+                        className="form-control"
+                        value={name}
+                        onChange={onChangeName}
+                    />
+                </div>
+                <div className="form-group">
                     <label>Description: </label>
                     <input type="text"
                         required
@@ -103,12 +117,12 @@ function EditExercise({ match }) {
                     />
                 </div>
                 <div className="form-group">
-                    <label>Exercise (in minutes): </label>
+                    <label>Duration (in minutes): </label>
                     <input
                         type="text"
                         className="form-control"
-                        value={exercise}
-                        onChange={onChangeExercise}
+                        value={duration}
+                        onChange={onChangDuration}
                     />
                 </div>
                 <div className="form-group">

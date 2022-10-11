@@ -7,7 +7,15 @@ exerciseSchema = new Schema({
         type: String,
         required: true
     },
-    exercise:{
+    photo:{
+        type: String,
+        required: true
+    },
+    name:{
+        type: String,
+        required: true
+    },
+    duration:{
         type: Number,
         required: true
     },
