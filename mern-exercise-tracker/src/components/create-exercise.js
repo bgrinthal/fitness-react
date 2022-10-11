@@ -8,8 +8,9 @@ function CreateExercise() {
 
     // states and set states
     const [username, setUsername] = useState('');
-    const [description, setDescription] = useState('');
+    const [photo, setPhoto] = useState('');
     const [name, setName] = useState('');
+    const [description, setDescription] = useState('');
     const [duration, setDuration] = useState(0);
     const [date, setDate] = useState(new Date());
     const [users, setUsers] = useState(['']);
@@ -33,12 +34,16 @@ function CreateExercise() {
         setUsername(e.target.value)
     }
 
-    function onChangeDescription(e) {
-        setDescription(e.target.value)
+    function onChangPhoto(e) {
+        setPhoto(e.target.value)
     }
 
     function onChangName(e) {
         setName(e.target.value)
+    }
+
+    function onChangeDescription(e) {
+        setDescription(e.target.value)
     }
 
     function onChangDuration(e) {
@@ -55,6 +60,7 @@ function CreateExercise() {
 
         const exercise = {
             username: username,
+            photo: photo,
             name: name,
             description: description,
             duration: duration,
@@ -66,7 +72,9 @@ function CreateExercise() {
         axios.post('http://localhost:5555/exercises/add', exercise)
             .then(res => console.log(res.data))
 
-        window.location = '/'
+        console.log(exercise)
+
+        // window.location = '/'
     }
 
 
@@ -93,8 +101,22 @@ function CreateExercise() {
                     </select>
                 </div>
                 <div className="form-group">
+                    <label>Exercise Photo : </label>
+                    
+                        <input
+                            required
+                            type="file"
+                            className="form-control"
+                            value={photo}
+                            onChange={onChangPhoto}
+                        />
+                        <input type="submit" />
+                    
+                </div>
+                <div className="form-group">
                     <label>Exercise Name : </label>
                     <input
+                        required
                         type="text"
                         className="form-control"
                         value={name}

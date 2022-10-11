@@ -6,6 +6,7 @@ import "react-datepicker/dist/react-datepicker.css";
 function EditExercise({ match }) {
     // states and set states
     const [username, setUsername] = useState('');
+    const [photo, setPhoto] = useState('');
     const [name, setName] = useState('');
     const [description, setDescription] = useState('');
     const [duration, setDuration] = useState(0);
@@ -41,6 +42,10 @@ function EditExercise({ match }) {
         setUsername(e.target.value)
     }
 
+    function onChangPhoto(e) {
+        setPhoto(e.target.value)
+    }
+
     function onChangeName(e) {
         setName(e.target.value)
     }
@@ -63,6 +68,7 @@ function EditExercise({ match }) {
 
         const exercise = {
             username: username,
+            photo: photo,
             name: name,
             description: description,
             duration: duration,
@@ -98,6 +104,13 @@ function EditExercise({ match }) {
                         }
                     </select>
                 </div>
+                <input
+                        required
+                        type="text"
+                        className="form-control"
+                        value={photo}
+                        onChange={onChangPhoto}
+                    />
                 <div className="form-group">
                     <label>Exercise Name: </label>
                     <input

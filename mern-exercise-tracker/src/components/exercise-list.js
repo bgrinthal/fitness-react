@@ -6,7 +6,7 @@ import axios from 'axios'
 const Exercise = props => (
 
     <div className="card mt-4" style={{ width: '18rem' }}>
-        <img className="card-img-top" src="..." alt="Card image cap" />
+        <img className="card-img-top" src={props.exercise.photo} alt="Card image cap" />
         <div className="card-body">
             <h5 className="card-title">User: {props.exercise.username}</h5>
             <p className="card-text">Name: {props.exercise.name}</p>
