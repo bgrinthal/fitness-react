@@ -3,7 +3,7 @@ import axios from 'axios';
 import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
 
-function EditExercise({ match }) {
+function EditExercise() {
     // states and set states
     const [username, setUsername] = useState('');
     const [photo, setPhoto] = useState('');
