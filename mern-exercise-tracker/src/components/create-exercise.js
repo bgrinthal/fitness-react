@@ -1,7 +1,9 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useContext } from 'react';
 import axios from 'axios';
 import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
+import { NotificationContext } from '../Notifications/NotificationProvider';
+import { v4 } from "uuid";
 
 function CreateExercise() {
     const userInput = useRef();
@@ -13,6 +15,8 @@ function CreateExercise() {
     const [description, setDescription] = useState('');
     const [date, setDate] = useState(new Date());
     const [users, setUsers] = useState(['']);
+    // notification
+    const dispatchAdd = useContext(NotificationContext);
 
     // use effect to display on page load
     useEffect(() => {
@@ -68,7 +72,16 @@ function CreateExercise() {
 
         console.log(exercise)
 
-        window.location = '/'
+        // window.location = '/'
+
+        dispatchAdd({
+            type: "ADD_NOTIFICATION",
+            payload: {
+                id: v4(),
+                type: "SUCCESS",
+                message: `${exercise.name} added! 💪✅`
+            }
+        })
     }
 
 

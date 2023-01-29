@@ -1,6 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios'
+import { NotificationContext } from '../Notifications/NotificationProvider';
+import { v4 } from "uuid";
 
 // Exercise components to display each exercise on the list
 const Exercise = props => (
@@ -21,6 +23,8 @@ function ExerciseList() {
 
     // states and set states
     const [exercises, setExercises] = useState([]);
+    // notification
+    const dispatchDelete = useContext(NotificationContext);
 
     // use effect to display on page load
     useEffect(() => {
@@ -40,6 +44,15 @@ function ExerciseList() {
             .then(res => console.log(res.data));
         // filters and displays everything that does not equal the id of the exercise selected
         setExercises(exercises.filter(el => el._id !== id))
+
+        dispatchDelete({
+            type: "ADD_NOTIFICATION",
+            payload: {
+              id: v4(),
+              type: "SUCCESS",
+              message: `${this.exercise.name} removed! 🗑️❌`
+            }
+          })
     }
 
     function exerciseList() {
