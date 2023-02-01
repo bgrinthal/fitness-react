@@ -43,10 +43,26 @@ function DailyRoutine() {
         //     )
         // })
     }
-
+    //TODO: will cycle through chosen axercises picked by user
     return (
-        <div>
-            <h1>HELLO WORLD</h1>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm border rounded">
+                    Picture
+                </div>
+                <div class="col-sm border rounded">
+                    <h4>Exercise</h4>
+                    <h4>Reps</h4>
+                    <h4>Sets</h4>
+                    <h4>Weight</h4>
+                    <div className="form-group">
+                        <input type="submit" value="Remove" className="btn btn-primary" />
+                    </div>
+                </div>
+                <div class="col-sm border rounded">
+                    Notes
+                </div>
+            </div>
         </div>
     )
 }
